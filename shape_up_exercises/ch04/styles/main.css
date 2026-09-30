@@ -1,0 +1,68 @@
+/* Default text and links */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 175%;
+}
+
+/* Header */
+header img {
+    float: left;
+    margin-right: 30px;
+}
+
+header h2 {
+    font-size: 250%;
+    color: steelblue;
+    font-style: italic;
+}
+
+header h3 {
+    font-size: 150%;
+}
+
+main {
+    clear: both;
+}
+
+/* Main section links */
+section a:link,
+section a:visited {
+    color: maroon;
+}
+
+section a:hover,
+section a:focus {
+    color: steelblue;
+}
+
+/* Additional resources */
+aside h2 {
+    color: maroon;
+}
+
+aside ul {
+    line-height: 1.5;
+}
+
+aside a:link,
+aside a:visited {
+    color: steelblue;
+}
+
+aside a:hover,
+aside a:focus {
+    color: maroon;
+}
+
+/* Footer */
+footer {
+    font-size: 85%;
+    text-align: center;
+}
