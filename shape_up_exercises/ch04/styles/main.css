@@ -120,3 +120,50 @@ color: white;
 font-size: 85%;
 text-align: center;
 }
+/* Shape Up 6-1: fluid two-column layout */
+* {
+box-sizing: border-box;
+}
+
+body {
+width: 100%;
+margin: 0;
+border: none;
+box-shadow: none;
+font-size: calc(0.75rem + 0.5vw);
+}
+
+header {
+padding: 2% 3%;
+}
+
+header img {
+width: 12%;
+min-width: 100px;
+max-width: 120px;
+height: auto;
+margin-right: 3%;
+}
+
+main {
+display: flex;
+align-items: flex-start;
+gap: 3%;
+padding: 2% 3%;
+}
+
+main > section {
+flex: 1;
+min-width: 0;
+}
+
+main > aside {
+flex: 0 0 32%;
+min-width: 0;
+margin: 0;
+padding: 2%;
+}
+
+blockquote {
+margin: 0 5% 1em;
+}
