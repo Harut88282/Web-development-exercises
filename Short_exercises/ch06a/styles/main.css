@@ -91,3 +91,31 @@ footer {
 		padding-bottom: 0; 
 	}
 }
+/* Two-column layout */
+main {
+display: flex;
+align-items: flex-start;
+}
+
+main > aside {
+order: 1;
+width: 25%;
+}
+
+main > section {
+order: 2;
+width: 75%;
+min-width: 0;
+}
+
+/* Scalable article image with text wrapping */
+article img {
+float: left;
+width: 45%;
+height: auto;
+margin: 0 1em 0.5em 0;
+}
+
+article {
+display: flow-root;
+}
