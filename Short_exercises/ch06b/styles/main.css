@@ -113,3 +113,27 @@ footer {
 		padding-bottom: 0; 
 	}
 }
+/* Three-column layout */
+main {
+display: flex;
+align-items: flex-start;
+}
+
+main > aside {
+width: 20%;
+min-width: 0;
+}
+
+main > section {
+width: 60%;
+min-width: 0;
+}
+
+aside img {
+max-width: 100%;
+height: auto;
+}
+
+article {
+display: flow-root;
+}
