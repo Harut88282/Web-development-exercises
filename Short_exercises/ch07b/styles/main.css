@@ -111,3 +111,66 @@ footer {
 		padding-bottom: 0; 
 	}
 }
+/* Horizontal navigation menu */
+.navbar {
+clear: both;
+background-color: var(--primary-color);
+}
+
+.navbar ul {
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+.menu {
+display: flex;
+flex-wrap: wrap;
+}
+
+.menu > li {
+position: relative;
+flex: 1 1 120px;
+}
+
+.navbar a {
+display: block;
+padding: .75em 1em;
+color: white;
+font-weight: normal;
+text-decoration: none;
+}
+
+.menu > li > a {
+text-align: center;
+}
+
+/* Hide the dropdown until Speakers is hovered or focused */
+.submenu {
+display: none;
+position: absolute;
+top: 100%;
+left: 0;
+width: 100%;
+background-color: var(--primary-color);
+z-index: 10;
+}
+
+.menu > li:hover > .submenu,
+.menu > li:focus-within > .submenu {
+display: block;
+}
+
+.navbar a:hover,
+.navbar a:focus {
+font-style: italic;
+}
+
+/* Keep Home highlighted */
+.navbar a.current,
+.navbar a.current:hover,
+.navbar a.current:focus {
+color: var(--accent-color);
+font-weight: bold;
+font-style: normal;
+}
