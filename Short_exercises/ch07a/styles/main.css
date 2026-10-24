@@ -101,3 +101,31 @@ footer {
 		padding-bottom: 0; 
 	}
 }
+/* Vertical navigation menu */
+#nav_list ul {
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+#nav_list a {
+display: block;
+padding: .75em;
+background-color: var(--primary-color);
+color: white;
+font-weight: bold;
+text-decoration: none;
+}
+
+#nav_list a:hover,
+#nav_list a:focus {
+color: var(--accent-color);
+}
+
+#nav_list a.current,
+#nav_list a.current:hover,
+#nav_list a.current:focus {
+background-color: var(--accent-color);
+color: black;
+font-style: normal;
+}
