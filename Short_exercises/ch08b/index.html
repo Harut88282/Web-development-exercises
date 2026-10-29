@@ -15,11 +15,18 @@
 		<h2>San Joaquin Valley Town Hall</h2>
 		<h3>Celebrating our <span class="shadow">75<sup>th</sup></span> Year</h3>
 	</header>
-	<nav class="navbar">
-		<ul class="menu">
-			<li><a class="current">Home</a></li>
+	<nav class="navbar" aria-label="Main navigation">
+        <input type="checkbox" id="menu-toggle" class="menu-toggle"
+            aria-label="Open or close navigation menu" aria-controls="main-menu">
+        <label for="menu-toggle" class="menu-btn">
+            <span class="open-icon" aria-hidden="true">&#9776;</span>
+            <span class="close-icon" aria-hidden="true">&times;</span>
+            <span class="visually-hidden">Menu</span>
+        </label>
+        <ul class="menu" id="main-menu">
+			<li><a href="index.html" class="current" aria-current="page">Home</a></li>
 			<li><a href="#">Tickets</a></li>
-			<li><a href="#">Speakers<small>&#9660;</small></a>
+			<li><a href="#">Speakers<small aria-hidden="true"></small></a>
 				<ul class="submenu">
 					<li><a href="#">October<br>David Brancaccio</a></li>
 					<li><a href="#">November<br>Andrew Ross Sorkin</a></li>
