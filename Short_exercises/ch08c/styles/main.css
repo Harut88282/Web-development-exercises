@@ -32,6 +32,7 @@ a:focus, a:hover { font-style: italic; }
 
 /* the styles for the header */
 header {
+	display: flow-root;
 	border-bottom: 3px solid var(--primary-color);
 	background-image: linear-gradient(30deg, 
 		var(--accent-color) 0%, 
@@ -64,6 +65,8 @@ main {
 /* the styles for the section */
 section {
 	flex-basis: 75%;
+	min-width: 0;
+	overflow-wrap: anywhere;
 	& h1 {
 		color: var(--primary-color);
 	}
@@ -83,13 +86,15 @@ article {
 		float: left;
 		margin: .25em 1em 1em 0;
 		border: 1px solid var(--dark);
-		width: min(100%, 225px);
+		width: min(45%, 225px);
 	}
 }
 
 /* the styles for the aside */
 aside {
 	flex-basis: 25%;
+	min-width: 0;
+	overflow-wrap: anywhere;
 	& h2 {
 		color: var(--primary-color);
 	}
@@ -112,30 +117,177 @@ footer {
 	}
 }
 
-/* the styles for the navigation menu */
+/* Each navigation bar measures its own available width. */
 .navbar {
-	background-color: var(--primary-color);
-	& ul {
-		list-style-type: none;
-		margin: 0;
-	}
-	& a {
-		display: block;
-		padding: .75em;
-		text-decoration: none;
-		color: var(--light);
-	}
-	& a.current {
-		color: var(--accent-color);
-		font-weight: bold;
-	}
-	& a.current:hover { 
-		font-style: normal; /* override hover effect */
-	}
+    container-name: navigation;
+    container-type: inline-size;
+    position: relative;
+    z-index: 10;
+    background-color: var(--primary-color);
+    & ul {
+        list-style-type: none;
+        margin: 0;
+    }
+    & a {
+        display: block;
+        padding: .75em;
+        text-decoration: none;
+        color: var(--light);
+    }
+    & a.current {
+        color: var(--accent-color);
+        font-weight: bold;
+    }
+    & a.current:hover {
+        font-style: normal;
+    }
+    & a:focus-visible {
+        outline: 2px solid var(--light);
+        outline-offset: -3px;
+    }
 }
 
-.menu {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-evenly;
+/* The main dropdown must also appear above the speakers navigation. */
+body > .navbar {
+    z-index: 20;
 }
+
+/* Hide the checkbox square while keeping it accessible by keyboard. */
+.navbar input[type="checkbox"],
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+.menu-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--light);
+    cursor: pointer;
+}
+
+.navbar input[type="checkbox"]:focus-visible + .menu-btn {
+    outline: 2px solid var(--light);
+    outline-offset: -4px;
+}
+
+.close-icon {
+    display: none;
+}
+
+.navbar input[type="checkbox"]:checked + .menu-btn .open-icon {
+    display: none;
+}
+
+.navbar input[type="checkbox"]:checked + .menu-btn .close-icon {
+    display: inline;
+}
+
+/* Narrow containers use a vertical dropdown over the page content. */
+.menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    flex-direction: column;
+    width: min(12rem, 100%);
+    background-color: var(--primary-color);
+}
+
+.navbar input[type="checkbox"]:checked ~ .menu {
+    display: flex;
+}
+
+/* These rules also support menu items with a nested .submenu. */
+.menu:has(.submenu) {
+    width: min(10rem, 40%);
+}
+
+.menu li:has(> .submenu) {
+    position: relative;
+    & > a::after {
+        content: "\25B6";
+        display: inline-block;
+        margin-left: .25em;
+        font-size: .75em;
+    }
+    &:hover > .submenu,
+    &:focus-within > .submenu {
+        display: block;
+    }
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    z-index: 2;
+    width: 150%;
+    background-color: var(--primary-color);
+}
+
+/* Each menu expands when its own navbar is at least 560px wide. */
+@container navigation (min-width: 560px) {
+    .navbar input[type="checkbox"],
+    .menu-btn {
+        display: none;
+    }
+    .menu,
+    .menu:has(.submenu),
+    .navbar input[type="checkbox"]:checked ~ .menu {
+        display: flex;
+        position: static;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-evenly;
+        width: auto;
+    }
+    .menu > li > a {
+        padding: .75em .25em;
+        white-space: nowrap;
+    }
+    .menu li:has(> .submenu) > a::after {
+        content: "\25BC";
+    }
+    .submenu {
+        top: 100%;
+        left: 0;
+        width: 175%;
+    }
+}
+
+/* Keep the article readable on phones; menu layouts still use @container. */
+@media only screen and (max-width: 480px) {
+    main {
+        flex-direction: column;
+    }
+    section {
+        order: 1;
+        flex-basis: auto;
+    }
+    aside {
+        order: 2;
+        flex-basis: auto;
+    }
+    article img {
+        float: none;
+        display: block;
+        width: min(100%, 225px);
+        margin: .25em 0 1em;
+    }
+}
+

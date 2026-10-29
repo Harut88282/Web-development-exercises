@@ -15,11 +15,17 @@
 		<h2>San Joaquin Valley Town Hall</h2>
 		<h3>Celebrating our <span class="shadow">75<sup>th</sup></span> Year</h3>
 	</header>
-	<nav class="navbar">
-		<ul class="menu">
+	<nav class="navbar" aria-label="Main navigation">
+		<input type="checkbox" id="main-toggle" aria-label="Open or close main navigation" aria-controls="main-menu">
+		<label for="main-toggle" class="menu-btn">
+			<span class="open-icon" aria-hidden="true">&#9776;</span>
+			<span class="close-icon" aria-hidden="true">&times;</span>
+			<span class="visually-hidden">Main navigation</span>
+		</label>
+		<ul class="menu" id="main-menu">
 			<li><a href="#">Home</a></li>
 			<li><a href="#">Tickets</a></li>
-			<li><a class="current">Speakers</a></li>
+			<li><a href="index.html" class="current" aria-current="page">Speakers</a></li>
 			<li><a href="#">About Us</a></li>
 			<li><a href="#">Contact Us</a></li>
 		</ul>
@@ -36,15 +42,21 @@
 		</aside>
 		<section>
 			<h1>Our Speakers</h1>
-			<nav class="navbar">
-				<ul class="menu">
+			<nav class="navbar" aria-label="Speaker navigation">
+				<input type="checkbox" id="speakers-toggle" aria-label="Open or close speaker navigation" aria-controls="speakers-menu">
+				<label for="speakers-toggle" class="menu-btn">
+					<span class="open-icon" aria-hidden="true">&#9776;</span>
+					<span class="close-icon" aria-hidden="true">&times;</span>
+					<span class="visually-hidden">Speaker navigation</span>
+				</label>
+				<ul class="menu" id="speakers-menu">
 					<li><a href="#">October<br>David Brancaccio</a></li>
 					<li><a href="#">November<br>Andrew Ross Sorkin</a></li>
 					<li><a href="#">January<br>Amy Chua</a></li>
-					<li><a class="current">February<br>Scott Sampson</a></li>
+					<li><a href="#speaker-sampson" class="current" aria-current="true">February<br>Scott Sampson</a></li>
 				</ul>
 			</nav>
-			<article>
+			<article id="speaker-sampson">
 				<h2>Fossil Threads in the Web of Life</h2>
 				<h3>Scott Sampson</h3>
 				<img src="images/sampson_dinosaur.jpg" alt="Scott Sampson with dinosaur">
