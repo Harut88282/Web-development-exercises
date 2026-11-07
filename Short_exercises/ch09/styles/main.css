@@ -194,5 +194,31 @@ footer {
 
 /* the styles for the Contact Us section */
 .contact {
-	padding: 2em 5em;	
+	padding: 2em clamp(1em, 6vw, 5em);
+}
+
+.contact-links {
+	margin: 0;
+	padding-inline-start: 2.25em;
+	list-style-type: square;
+}
+
+.contact-links li {
+	padding-inline-start: .5em;
+}
+
+.contact-links li + li {
+	margin-top: 1em;
+}
+
+.contact-links a {
+	color: var(--accent-color);
+	text-decoration: underline;
+}
+
+.contact-links a:hover,
+.contact-links a:focus {
+	color: var(--primary-color);
+	text-decoration: none;
+	font-weight: bold;
 }
