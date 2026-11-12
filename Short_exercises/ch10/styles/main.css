@@ -115,3 +115,57 @@ footer {
 		padding-bottom: 0; 
 	}
 }
+/* Chapter 10: custom font */
+@font-face {
+font-family: "Ink Free";
+src: url("../fonts/Inkfree.ttf") format("truetype");
+font-weight: normal;
+font-style: normal;
+font-display: swap;
+}
+
+h1 {
+font-family: "Ink Free", cursive;
+font-weight: normal;
+}
+
+/* Mix the accent color (65%) and primary color (35%) */
+main a {
+color: color-mix(
+in srgb,
+var(--accent-color) 65%,
+var(--primary-color) 35%
+);
+}
+
+/* Keep the floated figure inside the article */
+article {
+display: flow-root;
+}
+
+/* Place the figure on the left and wrap text around it */
+article figure {
+float: left;
+width: min(45%, 225px);
+margin: 0 1em 1em 0;
+}
+
+/* Caption appears above the image */
+article figcaption {
+font-weight: bold;
+padding-bottom: .5em;
+}
+
+/* The figure controls the float, rather than the image */
+article figure img {
+float: none;
+display: block;
+width: 100%;
+height: auto;
+margin: 0;
+}
+
+/* Space between each contact icon and its text */
+.contact-list i {
+margin-right: .3em;
+}
