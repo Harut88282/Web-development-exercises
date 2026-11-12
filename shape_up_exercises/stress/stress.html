@@ -1,15 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Shape Up! | Stress Management</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shape Up! | Stress Relief</title>
+<link rel="icon" href="../images/favicon.ico">
+<link rel="stylesheet" href="../styles/main.css">
 </head>
 
-<body>
-	<main>
-	    <h1>Stress Management</h1>
-		<h2>Under Construction</h2>
-	</main>
+<body class="stress-page">
+<header>
+<img src="../images/shape_up_logo.png" alt="Shape Up! logo">
+<h2>Shape Up!</h2>
+<h3>Find the best fit for you</h3>
+</header>
+
+<nav id="nav_menu" aria-label="Main navigation">
+<button id="menu_toggle" type="button"
+aria-expanded="false"
+aria-controls="menu_links" hidden>
+&#9776; Menu
+</button>
+
+<ul id="menu_links">
+<li>
+<a href="../index.html">Home</a>
+</li>
+<li>
+<a href="../strength/strength.html">Strength Training</a>
+</li>
+<li>
+<a href="../cardio/cardio.html">Cardio Exercises</a>
+</li>
+
+<li class="has-submenu">
+<a href="stress.html" class="current"
+aria-current="page">Stress Relief</a>
+
+<button class="submenu_toggle" type="button"
+aria-expanded="false"
+aria-controls="stress_links"
+aria-label="Stress Relief submenu" hidden>
+&#9662;
+</button>
+
+<ul id="stress_links">
+<li><a href="stress.html">What is Stress?</a></li>
+<li><a href="tips.html">5 Helpful Tips</a></li>
+<li><a href="meditate.html">Meditation</a></li>
+<li><a href="vipassana.html">Vipassana</a></li>
+</ul>
+</li>
+
+<li class="has-submenu">
+<a href="../diet/diet.html">Healthy Diets</a>
+
+<button class="submenu_toggle" type="button"
+aria-expanded="false"
+aria-controls="diet_links"
+aria-label="Healthy Diets submenu" hidden>
+&#9662;
+</button>
+
+<ul id="diet_links">
+<li>
+<a href="../diet/diet.html">Why a Healthy Diet?</a>
+</li>
+<li>
+<a href="../diet/meals.html">Plan Your Meals</a>
+</li>
+<li>
+<a href="../diet/calories.html">Count Your Calories</a>
+</li>
+<li>
+<a href="../diet/bmi.html">Calculate Your BMI</a>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+
+<main>
+<section>
+<h1>Stress Relief</h1>
+
+<p>
+We all encounter stress at one time or another.
+So it's important to be able to recognize stress
+and learn how to deal with it.
+</p>
+
+<h2>What is stress?</h2>
+
+<div class="stress-intro">
+<figure class="stress-figure">
+<img src="../images/stress.jpg"
+alt="People dealing with stress at work">
+<figcaption>
+Stress can come from work, family, or health problems
+</figcaption>
+</figure>
+
+<p>
+Stress is the feeling that people have when they
+are overloaded and struggling to cope with demands.
+Anything that poses a real or perceived challenge
+or threat to a person's well-being can cause stress.
+</p>
+
+<p>
+Stress can also be a motivator.
+It can be essential to survival.
+</p>
+</div>
+
+<p>
+The "fight-or-flight" mechanism helps us know when
+and how to respond to danger. But when this mechanism
+is triggered too easily, or when there are too many
+stressors at one time, it can become harmful to a
+person's mental and physical health.
+</p>
+
+<h2>How to manage your stress</h2>
+
+<p>To help manage stress, try the following:</p>
+
+<ul>
+<li>Take a break from what you're doing</li>
+<li>Exercise on a regular basis</li>
+<li>Take time to smile and laugh</li>
+<li>Get support from family and friends</li>
+<li>Meditate</li>
+</ul>
+</section>
+
+<aside>
+<h2>Additional resources</h2>
+
+<ul class="resource-list">
+<li class="resource-activity">
+<a href="https://www.cdc.gov/physical-activity-basics/benefits/">Physical activity and health</a>
+</li>
+<li class="resource-stretch">
+<a href="https://www.mayoclinic.org/healthy-lifestyle/fitness/basics/stretching-and-flexibility/hlv-20049447">Stretching exercises</a>
+</li>
+<li class="resource-strength">
+<a href="https://sportsmedicine.mayoclinic.org/news/strength-training-get-stronger-leaner-healthier/">Strength training</a>
+</li>
+<li class="resource-cardio">
+<a href="https://www.nhs.uk/better-health/get-active/home-workout-videos/">Cardiovascular training</a>
+</li>
+<li class="resource-yoga">
+<a href="https://www.nhs.uk/live-well/exercise/pilates-and-yoga/yoga/">Yoga workout</a>
+</li>
+</ul>
+</aside>
+</main>
+
+<footer>
+<p>&copy; Shape Up!</p>
+</footer>
+
+<script>
+const nav = document.getElementById('nav_menu');
+const menuButton = document.getElementById('menu_toggle');
+const wideScreen = window.matchMedia('(min-width: 850px)');
+const submenuButtons = nav.querySelectorAll('.submenu_toggle');
+
+function setSubmenu(button, open) {
+button.setAttribute('aria-expanded', String(open));
+button.parentElement.classList.toggle('submenu-open', open);
+}
+
+function closeSubmenus() {
+submenuButtons.forEach(button => {
+setSubmenu(button, false);
+});
+}
+
+function setMenu(open) {
+nav.classList.toggle('menu-open', open);
+menuButton.setAttribute('aria-expanded', String(open));
+menuButton.textContent = open
+? '\u2715 Close menu'
+: '\u2630 Menu';
+
+if (!open) {
+closeSubmenus();
+}
+}
+
+menuButton.addEventListener('click', () => {
+const open = menuButton.getAttribute('aria-expanded') !== 'true';
+setMenu(open);
+});
+
+submenuButtons.forEach(button => {
+const item = button.parentElement;
+button.hidden = false;
+
+button.addEventListener('click', () => {
+const open = button.getAttribute('aria-expanded') !== 'true';
+closeSubmenus();
+setSubmenu(button, open);
+});
+
+item.addEventListener('mouseenter', () => {
+if (wideScreen.matches &&
+window.matchMedia('(hover: hover)').matches) {
+closeSubmenus();
+setSubmenu(button, true);
+}
+});
+
+item.addEventListener('mouseleave', () => {
+if (wideScreen.matches &&
+!item.contains(document.activeElement)) {
+setSubmenu(button, false);
+}
+});
+
+item.addEventListener('focusout', event => {
+if (!item.contains(event.relatedTarget)) {
+setSubmenu(button, false);
+}
+});
+});
+
+document.addEventListener('click', event => {
+if (!nav.contains(event.target)) {
+setMenu(false);
+}
+});
+
+nav.addEventListener('focusout', event => {
+if (!nav.contains(event.relatedTarget)) {
+setMenu(false);
+}
+});
+
+nav.addEventListener('keydown', event => {
+if (event.key !== 'Escape') {
+return;
+}
+
+const openButton = nav.querySelector(
+'.submenu_toggle[aria-expanded="true"]'
+);
+
+if (openButton) {
+setSubmenu(openButton, false);
+openButton.focus();
+} else if (!wideScreen.matches &&
+nav.classList.contains('menu-open')) {
+setMenu(false);
+menuButton.focus();
+}
+});
+
+wideScreen.addEventListener('change', () => {
+const focusWasInNav = nav.contains(document.activeElement);
+setMenu(false);
+
+if (focusWasInNav) {
+if (wideScreen.matches) {
+nav.querySelector('a').focus();
+} else {
+menuButton.focus();
+}
+}
+});
+
+menuButton.hidden = false;
+nav.classList.add('js-menu');
+</script>
 </body>
 </html>
