@@ -1,84 +1,175 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee table</title>
-	<style>
-		body {
-			font-family: Arial, Helvetica, sans-serif;
-            font-size: 100%;
-			width: 80%;
-			margin: 1em auto;
-		}
-		table {
-			border-collapse: collapse;
-			border: 1px solid black;
-		}
-		thead {
-			background-color: lightgreen;
-		}
-		th, td {
-			border: 1px solid black;
-			padding: .35em 1em .35em .5em;
-			text-align: left;
-			vertical-align: middle;
-		}
-		tbody tr:nth-child(even) td {
-			background-color: lightgrey;
-		}
-        tbody td:last-child {
-            text-align: right;
-        }
-	</style>
-</head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Employee Table</title>
+<style>
+body {
+margin: 1rem;
+font-family: Arial, Helvetica, sans-serif;
+color: #181818;
+background-color: white;
+}
 
+table {
+width: 100%;
+max-width: 42rem;
+margin: 0 auto;
+border: 1px solid #444;
+border-collapse: collapse;
+}
+
+caption {
+padding-bottom: 0.5rem;
+font-size: 1.5rem;
+font-weight: bold;
+text-align: center;
+}
+
+th, td {
+padding: 0.35rem 0.55rem;
+border-bottom: 1px solid #555;
+text-align: left;
+}
+
+thead, tfoot {
+background-color: #9cda7f;
+font-weight: bold;
+}
+
+.department {
+vertical-align: top;
+}
+
+.years, tfoot th {
+text-align: right;
+}
+
+@media (width < 640px) {
+table {
+display: block;
+max-width: 25rem;
+border: 0;
+}
+
+/* Keep the headings available to screen readers. */
+thead {
+position: absolute;
+width: 1px;
+height: 1px;
+overflow: hidden;
+clip-path: inset(50%);
+}
+
+caption, tbody, tfoot, tr, th, td {
+display: block;
+}
+
+tbody, tfoot {
+border-inline: 1px solid #444;
+}
+
+tbody:first-of-type {
+border-top: 1px solid #444;
+}
+
+.department {
+background-color: #9cda7f;
+}
+
+.name {
+background-color: #d3d3d3;
+}
+
+tbody .years, tfoot tr {
+display: flex;
+justify-content: space-between;
+}
+
+tbody .years::before {
+content: "Years of Service:";
+}
+
+tfoot th::after {
+content: ":";
+}
+
+tfoot {
+border-bottom: 1px solid #444;
+}
+
+tfoot th, tfoot td {
+border-bottom: 0;
+}
+}
+</style>
+</head>
 <body>
 <table>
-	<thead>
-		<tr>
-			<th>Name</th>
-			<th>E-mail</th>
-			<th class="right">Years of Service</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Joel Murach</td>
-			<td>joelmurach@yahoo.com</td>
-			<td>22</td>
-		</tr>
-		<tr>
-			<td>Anne Boehm</td>
-			<td>anne@murach.com</td>
-			<td>34</td>
-		</tr>
-		<tr>
-			<td>Zak Ruvalcaba</td>
-			<td>zak@modulemedia.com</td>
-			<td>4</td>
-		</tr>
-		<tr>
-			<td>Judy Taylor</td>
-			<td>judy@murach.com</td>
-			<td>39</td>
-		</tr>
-		<tr>
-			<td>Bethany Lee</td>
-			<td>bethany@murach.com</td>
-			<td>10</td>
-		</tr>
-		<tr>
-			<td>Kelly Slivkoff</td>
-			<td>kelly@murach.com</td>
-			<td>25</td>
-		</tr>
-		<tr>
-			<td>Juliette Baylon</td>
-			<td>juliette@murach.com</td>
-			<td>1</td>
-		</tr>
-	</tbody>
+<caption>Employee Table</caption>
+<thead>
+<tr>
+<th scope="col">Department</th>
+<th scope="col">Name</th>
+<th scope="col">E-mail</th>
+<th scope="col" class="years">Years of Service</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<th scope="rowgroup" rowspan="3" class="department">Editorial</th>
+<td class="name">Joel Murach</td>
+<td>joelmurach@yahoo.com</td>
+<td class="years">22</td>
+</tr>
+<tr>
+<td class="name">Anne Boehm</td>
+<td>anne@murach.com</td>
+<td class="years">34</td>
+</tr>
+<tr>
+<td class="name">Zak Ruvalcaba</td>
+<td>zak@modulemedia.com</td>
+<td class="years">4</td>
+</tr>
+</tbody>
+
+<tbody>
+<tr>
+<th scope="rowgroup" rowspan="2" class="department">Marketing</th>
+<td class="name">Judy Taylor</td>
+<td>judy@murach.com</td>
+<td class="years">39</td>
+</tr>
+<tr>
+<td class="name">Bethany Lee</td>
+<td>bethany@murach.com</td>
+<td class="years">10</td>
+</tr>
+</tbody>
+
+<tbody>
+<tr>
+<th scope="rowgroup" rowspan="2" class="department">Customer Service</th>
+<td class="name">Kelly Slivkoff</td>
+<td>kelly@murach.com</td>
+<td class="years">25</td>
+</tr>
+<tr>
+<td class="name">Juliette Baylon</td>
+<td>juliette@murach.com</td>
+<td class="years">1</td>
+</tr>
+</tbody>
+
+<tfoot>
+<tr>
+<th scope="row" colspan="3">Total Years of Service</th>
+<td class="years">105</td>
+</tr>
+</tfoot>
 </table>
 </body>
 </html>
