@@ -1,16 +1,71 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Complete a Form</title>
-	<link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/main.css">
 </head>
-
 <body>
-<h1>Please complete our survey</h1>
-<form action="confirmation.html" method="post">
-    
-</form>
+    <main>
+        <h1>Please complete our survey</h1>
+        <form action="confirmation.html" method="post" id="survey">
+            <fieldset>
+                <legend>Contact information</legend>
+                <label for="email">Email address:</label>
+                <input type="email" id="email" name="email" autocomplete="email"
+                       accesskey="e" required autofocus>
+
+                <label for="first-name">First name:</label>
+                <input type="text" id="first-name" name="first_name" autocomplete="given-name"
+                       pattern=".*\S.*" accesskey="f" required>
+
+                <label for="last-name">Last name:</label>
+                <input type="text" id="last-name" name="last_name" autocomplete="family-name"
+                       pattern=".*\S.*" accesskey="l" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>Geographic information</legend>
+                <label for="state">State:</label>
+                <input type="text" id="state" name="state" autocomplete="address-level1"
+                       placeholder="Two characters" pattern="[A-Za-z]{2}"
+                       title="Enter two letters, for example CA." accesskey="s" required>
+
+                <label for="zip">Zip code:</label>
+                <input type="text" id="zip" name="zip" autocomplete="postal-code"
+                       inputmode="numeric" placeholder="Five digits" pattern="[0-9]{5}"
+                       title="Enter a five-digit ZIP code." accesskey="z" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>Source</legend>
+                <label for="source">How did you hear about us?</label>
+                <select id="source" name="source" accesskey="h">
+                    <option value="search">Web Search</option>
+                    <option value="friend">Friend or family member</option>
+                    <option value="social">Social media</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="comments">Additional comments:</label>
+                <textarea id="comments" name="comments" rows="5" accesskey="c"
+                          placeholder="Add any additional comments here."></textarea>
+            </fieldset>
+
+            <button type="submit" class="button submit-button">Submit</button>
+            <button type="reset" class="button reset-button">Reset</button>
+        </form>
+    </main>
+    <script>
+        const survey = document.getElementById("survey");
+        // For these static previews, open the confirmation page after validation.
+        if (location.protocol === "file:" || location.hostname.endsWith(".github.io")) {
+            survey.addEventListener("submit", function (event) {
+                event.preventDefault();
+                location.assign(survey.action);
+            });
+        }
+    </script>
 </body>
 </html>
