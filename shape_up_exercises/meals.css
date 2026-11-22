@@ -1,0 +1,73 @@
+/* The shared header, navigation, resource links, and footer use the site's
+   existing styles. The rules here are for the meal order page. */
+@media (min-width: 52.01rem) {
+    main { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }
+}
+
+#order-heading {
+    color: #202020;
+    text-align: left;
+}
+section > p { margin: 0.55rem 0; }
+
+form > fieldset {
+    min-width: 0;
+    margin: 0 0 0.85rem;
+    padding: 0.6rem 1rem 0.9rem;
+    border: 1px solid #969696;
+    border-radius: 3px;
+}
+
+form > fieldset > legend {
+    padding-inline: 0.2rem;
+    font-weight: bold;
+    color: #61342f;
+}
+
+.about label { display: block; margin-bottom: 0.2rem; }
+.about label span { color: #9c2326; }
+.about input, .about select, textarea {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    padding: 0.3rem 0.45rem;
+    color: inherit;
+    font: inherit;
+    border: 1px solid #818181;
+    border-radius: 4px;
+    background-color: white;
+}
+.about input, .about select { margin-bottom: 0.55rem; }
+.about select:last-child { margin-bottom: 0; }
+.about input:required:invalid { border-color: #a12a2f; }
+.about input:required:valid { border-color: #35713f; }
+
+.question { margin: 0; padding: 0; border: 0; min-width: 0; }
+.question + .question { margin-top: 0.75rem; }
+.question legend, .prompt { margin: 0 0 0.15rem; padding: 0; }
+.choices, .actions { display: flex; flex-wrap: wrap; gap: 0.15rem 0.55rem; }
+.choices label, .other-choice { display: inline-flex; align-items: center; gap: 0.25rem; }
+.choices input, .other-choice input { margin: 0; }
+.other-choice { margin-top: 0.25rem; }
+textarea { margin-top: 0.35rem; resize: vertical; }
+textarea:disabled { color: #444; background: #fafafa; }
+
+.actions { align-items: center; gap: 0.6rem 1.25rem; padding: 0.9rem 1.5rem; }
+.button {
+    min-width: 7.5rem;
+    padding: 0.48rem 1rem;
+    border: 1px solid #535353;
+    border-radius: 0.5rem;
+    color: white;
+    font: inherit;
+    font-weight: bold;
+    box-shadow: 0 1px 3px #777;
+    cursor: pointer;
+}
+.submit-button { background-color: #266995; }
+.submit-button:hover { background-color: #164767; }
+.reset-button { background-color: #8e1721; }
+.reset-button:hover { background-color: #621018; }
+
+form :focus-visible { outline: 2px solid #155397; outline-offset: 2px; }
+#order-status { margin: 0; color: #285934; font-weight: bold; }
